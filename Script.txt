@@ -1,0 +1,53 @@
+INSERT INTO dentist (name, specialization, license_number, clinic_name) VALUES
+    ('Иванов Виталий Петрович', 'Терапевт', '1234567', 'Клиника А'),
+    ('Петрова Наталья Евгеньвна', 'Хирург', '9876543', 'Клиника Б'),
+    ('Козлова Елена Владиславовна', 'Детский томатолог', '3456789', 'Клиника Г');
+INSERT INTO prescription (dentist_id, medicine_name, application)
+VALUES
+    (1, 'Амбробена', 'От кашля'),
+    (2, 'Тамтунверде', 'От горла'),
+    (3, 'Амоксиклав', 'От вируса');
+select * from prescription
+INSERT INTO patients (name, age, address, phoneNumber, prescription_id)
+VALUES 
+('Иванов Олег Иванович', 30, 'ул. Петрова д.6', '+7(915)162-83-32', 1),
+('Исаев Апти Витальевич', 12, 'ул. Савина д.16', '+7(913)132-83-32', 2),
+('Новиков Артем Петрович', 19, 'ул. Мерченко д.2', '+7(963)162-27-86', 3);
+
+create TABLE invoices (
+    id SERIAL PRIMARY KEY,
+    patient_id VARCHAR(255) NOT NULL,
+    amount NUMERIC(10, 2) NOT NULL,
+    is_paid VARCHAR(255) NOT NULL
+);
+INSERT INTO invoices (patient_id, amount, is_paid)
+VALUES
+    (1, 500.00, 'Нет'),
+    (2, 750.00, 'Да'),
+    (3, 1200.00, 'В процессе');
+select * from invoices
+INSERT INTO treatments (name, description, cost)
+VALUES
+    ('Удаление зуба молочного', 'Удаляется болгаркой', 500.00),
+    ('Очистка зубов от кариеса', 'Чистка происходит профессиональными малярами города Бишкек', 7500.00),
+    ('Введение анестезии', 'Анестезия содержит в себе только боли и муки', 1200.00);
+INSERT INTO medical_records (patient_id, diagnosis, treatment)
+VALUES
+    (1, 'Кариес', 'Чистка зубов'),
+    (2, 'Нет зуба', 'ОТпиливание болгаркой');
+
+INSERT INTO patient_treatment (patient_id, treatment_id)
+VALUES
+    (1, 1),
+    (2, 2),
+    (3, 3);
+select * from patient_treatmentatment
+INSERT INTO model_user (username, active, password)
+VALUES
+    ('vasya', true, '1234');
+INSERT INTO user_role (user_id, roles) VALUES (2,'ADMIN');
+SELECT * FROM model_user
+SELECT * FROM user_role
+INSERT INTO model_user (active, password, username) VALUES (true,1234, 'va');
+SELECT * FROM model_user;
+SELECT * FROM user_role;
